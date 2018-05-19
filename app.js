@@ -9,6 +9,9 @@ app.post('/login',(req,res)=>{
   console.log(req.body)
   res.send(req.body)
 })
+app.get('/',(req,res)=>{
+  res.send('Hello World')
+})
 app.listen(3005,function(){
   console.log('helllo world')
 
