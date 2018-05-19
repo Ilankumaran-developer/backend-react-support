@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')
 var cors = require('cors');
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.post('/login',(req,res)=>{
   console.log(req.body)
   res.send(req.body)
