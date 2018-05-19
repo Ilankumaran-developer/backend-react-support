@@ -12,7 +12,7 @@ app.post('/login',(req,res)=>{
 app.get('/aaa',(req,res)=>{
   res.send('Hello World')
 })
-app.listen(3005,function(){
+app.listen(process.env.PORT || 3005,function(){
   console.log('helllo world')
 
 })
