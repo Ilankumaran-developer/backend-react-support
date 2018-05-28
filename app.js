@@ -27,6 +27,7 @@ app.post('/login',(req,res)=>{
 res.send(req.body)
 })
 app.post('/register',(req,res)=>{
+  console.log('registeruingggg')
   console.log(req.body)
   firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).catch(function(error) {
   // Handle Errors here.
