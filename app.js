@@ -6,13 +6,6 @@ var mclient = require('mongodb').MongoClient;
 const CONFIG={};
 CONFIG.dburl = 'mongodb://Ilankumaran-developer:ilan86828@ds121955.mlab.com:21955/tripwell'
 
-var db = ''
-mclient.connect(CONFIG.dburl,(err,database)=>{
-
-   db = database;
-})
-
-
 
 
 app.use(bodyParser.json());
@@ -23,7 +16,10 @@ app.post('/login',(req,res)=>{
 res.send(req.body)
 })
 app.post('/register',(req,res)=>{
-  db.collection('users').insert(req.body,(err,doc)=>{
+  var db = ''
+  mclient.connect(CONFIG.dburl,(err,database)=>{
+    db = database;
+db.collection('users').insert(req.body,(err,doc)=>{
  		if(err){
  			console.log(err);
  res.send({success:'0'});
@@ -34,6 +30,7 @@ app.post('/register',(req,res)=>{
 
  	res.send([{success:'1'}]);
  }
+   })
  })
 
 
