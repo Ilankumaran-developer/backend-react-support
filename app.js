@@ -29,7 +29,7 @@ db.collection('users').insert(req.body,(err,doc)=>{
  else{
  	console.log('success');
 
- 	res.send([{success:'1'}]);
+ 	res.send({success:'1',_id:doc._id});
  }
    })
  })
