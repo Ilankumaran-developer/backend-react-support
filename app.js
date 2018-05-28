@@ -6,11 +6,11 @@ var mclient = require('mongodb').MongoClient;
 const CONFIG={};
 CONFIG.dburl = 'mongodb://Ilankumaran-developer:Il@n86828@ds121955.mlab.com:21955/tripwell'
 
-  const db = '';
+var dbc = ''
 mclient.connect(CONFIG.dburl,(err,database)=>{
-  db = database;
+   dbc = database;
 })
-
+const db = dbc
 
 
 app.use(cors());
