@@ -1,7 +1,8 @@
 var express  = require('express')
 var app = express();
 var bodyParser = require('body-parser')
-var firebase = require('firebase')
+var firebaseauth = require('firebaseauth')
+var firebase = new firebaseauth('AIzaSyDKKFfMvZYj_jvVFL3hBZFRckZBZqpuuJM');
 
 var cors = require('cors');
 
@@ -16,7 +17,7 @@ var cors = require('cors');
     storageBucket: "trackbuddy-704b3.appspot.com",
     messagingSenderId: "195476621352"
   };
-  firebase.initializeApp(config);
+  //firebase.initializeApp(config);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,10 +30,9 @@ res.send(req.body)
 app.post('/register',(req,res)=>{
   console.log('registeruingggg')
   console.log(req.body)
-  firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).catch(function(error) {
+  firebase.registerWithEmail(req.body.email, req.body.password).catch(function(error,result) {
   // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
+  console.log(error,result)
     res.send(req.body)
   // ...
 });
