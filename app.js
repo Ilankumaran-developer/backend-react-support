@@ -1,23 +1,17 @@
 var express  = require('express')
 var app = express();
 var bodyParser = require('body-parser')
-const firebaseauth = require('firebaseauth');
-var firebase = new firebaseauth('AIzaSyDKKFfMvZYj_jvVFL3hBZFRckZBZqpuuJM');
+var mongojs = require('mongojs');
+var mclient = require('mongodb').MongoClient;
+const CONFIG={};
+CONFIG.dburl = 'mongodb://Ilankumaran-developer:Il@n86828@ds121955.mlab.com:21955/tripwell'
 
-var cors = require('cors');
+  const db = '';
+mclient.connect(CONFIG.dburl,(err,database)=>{
+  db = database;
+})
 
 
-
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDKKFfMvZYj_jvVFL3hBZFRckZBZqpuuJM",
-    authDomain: "trackbuddy-704b3.firebaseapp.com",
-    databaseURL: "https://trackbuddy-704b3.firebaseio.com",
-    projectId: "trackbuddy-704b3",
-    storageBucket: "trackbuddy-704b3.appspot.com",
-    messagingSenderId: "195476621352"
-  };
-  //firebase.initializeApp(config);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -28,14 +22,20 @@ app.post('/login',(req,res)=>{
 res.send(req.body)
 })
 app.post('/register',(req,res)=>{
-  console.log('registeruingggg')
-  console.log(req.body)
-  firebase.registerWithEmail(req.body.email, req.body.password).catch(function(error,result) {
-  // Handle Errors here.
-  console.log(error,result)
-    res.send(req.body)
-  // ...
-});
+  db.collection('users').insert(req.body,(err,doc)=>{
+ 		if(err){
+ 			console.log(err);
+ res.send({success:'0'});
+ 		}
+
+ else{
+ 	console.log('success');
+
+ 	res.send([{success:'1'}]);
+ }
+ })
+
+
 
 })
 app.get('/aaa',(req,res)=>{

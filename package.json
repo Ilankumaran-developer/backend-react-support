@@ -13,6 +13,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "firebase": "^5.0.4",
-    "firebaseauth": "^0.9.8"
+    "firebaseauth": "^0.9.8",
+    "mongodb": "^3.1.0-beta4",
+    "mongojs": "^2.5.0"
   }
 }
