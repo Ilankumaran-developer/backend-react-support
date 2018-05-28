@@ -1,7 +1,7 @@
 var express  = require('express')
 var app = express();
 var bodyParser = require('body-parser')
-var firebaseauth = require('firebaseauth')
+const firebaseauth = require('firebaseauth');
 var firebase = new firebaseauth('AIzaSyDKKFfMvZYj_jvVFL3hBZFRckZBZqpuuJM');
 
 var cors = require('cors');
