@@ -13,7 +13,7 @@ mclient.connect(CONFIG.dburl,(err,database)=>{
 const db = dbc
 
 
-app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.post('/login',(req,res)=>{
