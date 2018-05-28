@@ -23,11 +23,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.post('/login',(req,res)=>{
   console.log(req.body)
-  res.send(req.body)
+
+res.send(req.body)
 })
 app.post('/register',(req,res)=>{
   console.log(req.body)
-  res.send(req.body)
+  firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+    res.send(req.body)
+  // ...
+});
+
 })
 app.get('/aaa',(req,res)=>{
   res.send('Hello World')
