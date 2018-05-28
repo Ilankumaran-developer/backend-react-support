@@ -4,13 +4,14 @@ var bodyParser = require('body-parser')
 var mongojs = require('mongojs');
 var mclient = require('mongodb').MongoClient;
 const CONFIG={};
-CONFIG.dburl = 'mongodb://Ilankumaran-developer:Il@n86828@ds121955.mlab.com:21955/tripwell'
+CONFIG.dburl = 'mongodb://Ilankumaran-developer:ilan86828@ds121955.mlab.com:21955/tripwell'
 
-var dbc = ''
+var db = ''
 mclient.connect(CONFIG.dburl,(err,database)=>{
-   dbc = database;
+
+   db = database;
 })
-const db = dbc
+
 
 
 
