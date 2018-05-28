@@ -19,6 +19,7 @@ app.post('/register',(req,res)=>{
   var db = ''
   mclient.connect(CONFIG.dburl,(err,database)=>{
     db = database;
+    console.log(db)
 db.collection('users').insert(req.body,(err,doc)=>{
  		if(err){
  			console.log(err);

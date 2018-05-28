@@ -14,7 +14,7 @@
     "express": "^4.16.3",
     "firebase": "^5.0.4",
     "firebaseauth": "^0.9.8",
-    "mongodb": "^3.1.0-beta4",
+    "mongodb": "^2.2.33",
     "mongojs": "^2.5.0"
   }
 }
