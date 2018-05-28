@@ -19,7 +19,7 @@ app.post('/register',(req,res)=>{
   var db = ''
   mclient.connect(CONFIG.dburl,(err,database)=>{
     db = database;
-    console.log(db)
+
 db.collection('users').insert(req.body,(err,doc)=>{
  		if(err){
  			console.log(err);
@@ -30,7 +30,7 @@ db.collection('users').insert(req.body,(err,doc)=>{
    console.log(doc)
  	console.log('success');
 
- 	res.send({success:'1','_id':doc._id});
+ 	res.send({success:'1','_id':doc.ops[0]._id});
  }
    })
  })
