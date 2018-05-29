@@ -11,9 +11,23 @@ CONFIG.dburl = 'mongodb://Ilankumaran-developer:ilan86828@ds121955.mlab.com:2195
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.post('/login',(req,res)=>{
-  console.log(req.body)
+  var db = ''
+  mclient.connect(CONFIG.dburl,(err,database)=>{
+    db = database;
 
-res.send(req.body)
+			db.collection('users').find({$and:[{"username":req.body.username},{"password":req.body.password}]}).toArray(function(err,dat){
+				if(err)
+				console.log(err);
+				else{
+			console.log(dat)
+			res.send(dat);
+				}
+
+
+});
+  })
+
+
 })
 app.post('/register',(req,res)=>{
   var db = ''
